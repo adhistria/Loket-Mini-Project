@@ -13,10 +13,9 @@ class LocationController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'name' => 'required|string|email',
+            'name' => 'required|string',
             'address' => 'required|string'
         ]);
-
         $location = new Location();
         $location->name= $request->name;
         $location->address= $request->address;

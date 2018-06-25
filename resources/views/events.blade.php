@@ -1,10 +1,12 @@
 @extends('main.app')
-@section('title','Locations')
-@section('header-title','Add and Update Location')
+@section('title','Event')
+@section('header-title','Add and Update Event')
 @section('content-body')
     <div class="wrapper">
         <div class="modal fade" id="update_modal" role="dialog">
             <div class="modal-dialog">
+
+                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -15,15 +17,25 @@
                             <input type="hidden" name="_method" value="PUT">
                             @csrf
                             <div class="form-group">
-                                <label for="input_name" class="col-sm-2 control-label">Name</label>
+                                <label for="input_name" class="col-sm-2 control-label">Title</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_name" placeholder="Nama Tempat" name = "name" required>
+                                    <input type="text" class="form-control" id="input_title" placeholder="Event Name" name = "title">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input_address" class="col-sm-2 control-label">Address</label>
+                                <label for="input_address" class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_address" placeholder="Address" name="address" required>
+                                    <input type="text" class="form-control" id="input_description" placeholder="Event Description" name="description">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="location_id" class="col-sm-2 control-label">Location</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="location_id">
+                                        @foreach($locations as $location)
+                                            <option value="{{$location->id}}">{{$location->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -31,7 +43,7 @@
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary center">Update Location</button>
+                                    <button type="submit" class="btn btn-info center">Update Event</button>
                                 </div>
                             </div>
                         </div>
@@ -40,26 +52,42 @@
 
             </div>
         </div>
+
         <div class="modal fade" id="store_modal" role="dialog">
             <div class="modal-dialog">
+
+                <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add New Data</h4>
                     </div>
-                    <form class="form-horizontal"  action="{{route("store_location")}}"method="POST">
+                    <form class="form-horizontal"  route="{{'add_event'}}" method="POST" >
                         <div class="modal-body">
                             @csrf
                             <div class="form-group">
                                 <label for="input_name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_name" placeholder="Nama Tempat" name = "name" required>
+                                    <input type="text" class="form-control" id="input_title" placeholder="Event Name" name = "title">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input_address" class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_address" placeholder="Address" name="address" required>
+                                    <input type="text" class="form-control" id="input_description" placeholder="Event Description" name="description">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="location_id" class="col-sm-2 control-label">Location</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="location_id">
+                                        {{--<option selected>Choose Loation</option>--}}
+                                        {{--<option selected>Choose Loation</option>--}}
+                                        @foreach($locations as $location)
+                                            <option value="{{$location->id}}">{{$location->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    {{--<input type="text" class="form-control" id="inputPassword3" placeholder="Address" name="location_id">--}}
                                 </div>
                             </div>
 
@@ -67,7 +95,7 @@
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-primary center">Create New Location</button>
+                                    <button type="submit" class="btn btn-default center">Add Event</button>
                                 </div>
                             </div>
                         </div>
@@ -85,29 +113,32 @@
 
         </div>
         <div class="table-wrapper">
-            <table id="location_data" class="table table-striped table-bordered" style="width:100%">
+            <table id="event_data" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Address</th>
+                    <th>Description</th>
+                    <th>Location</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($locations as $key => $location)
+                @foreach($events as $event)
                     <tr >
-                        <td align="center">{{$location->name}}</td>
-                        <td align="center">{{$location->address}}</td>
+                        <td align="center">{{$event->title}}</td>
+                        <td align="center">{{$event->description}}</td>
+                        <td align="center">{{$event->location->name}}</td>
                         <td align="center"><a
                                     href="#"
                                     data-target="#update_modal"
                                     data-toggle="modal"
-                                    data-name="{{ $location->name}}"
-                                    data-address="{{ $location->address}}"
-                                    data-idlocation="{{$location->id}}"
+                                    data-title="{{ $event->title}}"
+                                    data-description="{{ $event->description}}"
+                                    data-idevent="{{$event->id}}"
+                                    data-idlocation="{{$event->location_id}}"
                                     id = "open-modal"
-                                    role="button"
-                                    class="btn btn-primary btn-md"
+                                    role = "button"
+                                    class="btn btn-md btn-primary"
                             >
                                 Edit
                             </a>
@@ -119,26 +150,33 @@
                 <tfoot>
                 <tr>
                     <th>Name</th>
-                    <th>Address</th>
+                    <th>Description</th>
+                    <th>Location</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
+
         </div>
     </div>
+
+
 @endsection
 @section('script')
     <script>
         $(document).ready(function() {
-            $('#location_data').DataTable();
+            $('#event_data').DataTable();
         } );
         $(document).on("click", "#open-modal", function () {
-            var name = $(this).data('name');
-            var address = $(this).data('address');
+            var title = $(this).data('title');
+            var description= $(this).data('description');
             var location_id= $(this).data('idlocation');
-            $(".modal-body #input_name").val(name);
-            $(".modal-body #input_address").val(address);
-            $('#form_update').attr('action', "/location/"+location_id);
+            var event_id= $(this).data('idevent');
+            $(".modal-body #input_title").val(title);
+            $(".modal-body #input_description").val(description);
+            $(".modal-body select").val(location_id);
+            $('#form_update').attr('action', "/event/"+event_id);
         });
     </script>
 @endsection
+

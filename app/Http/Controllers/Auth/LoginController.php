@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Laravel\Socialite;
+use Illuminate\Support\Facades\Auth;
+use Socialite;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -67,5 +69,10 @@ class LoginController extends Controller
         setcookie("access_token_secret", $access_token_secret, time()+60*10);
         auth()->login($user);
         return redirect()->to('/dashboard');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('home');
     }
 }
