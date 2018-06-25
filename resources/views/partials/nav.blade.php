@@ -7,16 +7,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Mini Project</a>
+            <a class="navbar-brand">Mini Project</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
+
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="{{route('get_event')}}">Event</a></li>
+                <li><a href="{{route('get_location')}}">Location</a></li>
+                <li><a href="{{route('get_ticket')}}">Ticket</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Event</a></li>
-                <li><a href="#">Location</a></li>
-                <li><a href="#">Ticket</a></li>
                 <li><a>Hi {{Auth::user()->name}}</a></li>
                 <li><a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
@@ -30,5 +33,6 @@
                 </li>
             </ul>
         </div>
+
     </div>
 </nav>

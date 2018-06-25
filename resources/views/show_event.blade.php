@@ -5,9 +5,25 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{route('home')}}">Mini Project</a>
+        </div>
+
+    </div>
+</nav>
+
+
 <div class="content-header">
     <div class="container">
-        <h1 align="center"> Show Event {{$event->title}}</h1>
+        <h1 align="center"> Event {{$event->title}}</h1>
     </div>
 </div>
 <div class="content">

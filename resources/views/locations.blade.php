@@ -97,7 +97,7 @@
                 @foreach($locations as $key => $location)
                     <tr >
                         <td align="center">{{$location->name}}</td>
-                        <td align="center">{{$location->address}}</td>
+                        <td align="left">{{$location->address}}</td>
                         <td align="center"><a
                                     href="#"
                                     data-target="#update_modal"

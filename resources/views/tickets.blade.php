@@ -12,6 +12,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Update Data</h4>
                     </div>
+
                     <form class="form-horizontal"  id="form_update"method="POST">
                         <div class="modal-body">
                             <input type="hidden" name="_method" value="PUT">
@@ -44,7 +45,7 @@
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-info center">Update Ticket</button>
+                                    <button type="submit" class="btn btn-primary center">Update Ticket</button>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +64,13 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add New Data</h4>
                     </div>
-                    <form class="form-horizontal"  action="{{route('store_ticket')}}"method="POST">
+                    @if(count($events)==0)
+                        <div align="center" style="padding: 2.7rem">
+                            <h4>There's No Event</h4>
+                            <h5> Create Your Own Event <a href="{{route('get_event')}}">Here</a></h5>
+                        </div>
+                    @else
+                        <form class="form-horizontal"  action="{{route('store_ticket')}}"method="POST">
                         <div class="modal-body">
                             @csrf
                             <input type="hidden">
@@ -94,11 +101,12 @@
                         <div class="modal-footer">
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-info center">Add Ticket</button>
+                                    <button type="submit" class="btn btn-primary center">Add Ticket</button>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    @endif
                 </div>
 
             </div>
@@ -129,7 +137,7 @@
                         <td align="center">{{$ticket->event->title}}</td>
                         <td align="center">{{$ticket->type}}</td>
                         <td align="center">{{$ticket->price}}</td>
-                        <td align="center">{{$ticket->event->location->name}}</td>
+                        <td align="left">{{$ticket->event->location->name}}</td>
                         <td><a
                                     href="#"
                                     data-target="#update_modal"
@@ -140,7 +148,7 @@
                                     data-idevent="{{$ticket->event->id}}"
                                     id = "open-modal"
                                     role="button"
-                                    class="btn btn-info"
+                                    class="btn btn-primary"
                             >
                                 Edit
                             </a>

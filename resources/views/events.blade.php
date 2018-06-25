@@ -8,6 +8,7 @@
 
                 <!-- Modal content-->
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Update Data</h4>
@@ -58,48 +59,54 @@
 
                 <!-- Modal content-->
                 <div class="modal-content">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Add New Data</h4>
                     </div>
-                    <form class="form-horizontal"  route="{{'add_event'}}" method="POST" >
-                        <div class="modal-body">
-                            @csrf
-                            <div class="form-group">
-                                <label for="input_name" class="col-sm-2 control-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_title" placeholder="Event Name" name = "title">
+                    @if(count($locations)==0)
+                        <div align="center" style="padding: 2.7rem">
+                            <h4>There's No Location</h4>
+                            <h5> Create Location <a href="{{route('get_location')}}">Here</a></h5>
+                        </div>
+                    @else
+                        <form class="form-horizontal"  route="{{'add_event'}}" method="POST" >
+                            <div class="modal-body">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="input_name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="input_title" placeholder="Event Name" name = "title">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="input_address" class="col-sm-2 control-label">Address</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" rows="4" id="input_description" placeholder="Event Description" name="description"></textarea>
+                                <div class="form-group">
+                                    <label for="input_address" class="col-sm-2 control-label">Description</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="4" id="input_description" placeholder="Event Description" name="description"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="location_id" class="col-sm-2 control-label">Location</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name="location_id">
-                                        {{--<option selected>Choose Loation</option>--}}
-                                        {{--<option selected>Choose Loation</option>--}}
-                                        @foreach($locations as $location)
-                                            <option value="{{$location->id}}">{{$location->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    {{--<input type="text" class="form-control" id="inputPassword3" placeholder="Address" name="location_id">--}}
+                                <div class="form-group">
+                                    <label for="location_id" class="col-sm-2 control-label">Location</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="location_id">
+                                            @foreach($locations as $location)
+                                                <option value="{{$location->id}}">{{$location->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                        <div class="modal-footer">
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default center">Add Event</button>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary center">Add Event</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    @endif
+
                 </div>
 
             </div>
@@ -110,7 +117,6 @@
             <div class="pull-right box-tools">
                 <a data-target="#store_modal" data-toggle="modal" role="button" class="btn btn-md btn-primary"  href="#myModal" >Add New</a>
             </div>
-
         </div>
         <div class="table-wrapper">
             <table id="event_data" class="table table-striped table-bordered" style="width:100%">
@@ -126,7 +132,7 @@
                 @foreach($events as $event)
                     <tr >
                         <td align="center">{{$event->title}}</td>
-                        <td align="center">{{$event->description}}</td>
+                        <td align="justify">{{$event->description}}</td>
                         <td align="center">{{$event->location->name}}</td>
                         <td align="center"><a
                                     href="#"

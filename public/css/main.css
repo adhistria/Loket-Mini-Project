@@ -84,7 +84,7 @@
 /*}*/
 a {
     color: #71c7ec;
-    font-size: 18px;
+    font-size: 16px;
 }
 .navbar-brand {
     font-size: 20px;
@@ -92,4 +92,23 @@ a {
 .btn{
     /*background-color: #71c7ec;*/
     color: white;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
 }

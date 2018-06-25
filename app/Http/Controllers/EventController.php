@@ -52,17 +52,18 @@ class EventController extends Controller
         return view('show_event',['event'=>$event]);
     }
 
-    public function tweets($id){
+    public function tweet($id){
+        $event = Event::find($id);
         $access_token= $_COOKIE['access_token'];
         $access_token_secret = $_COOKIE['access_token_secret'];
         $connection = new TwitterOAuth(env('CONSUMER_KEY'),env('CONSUMER_SECRET'),$access_token,$access_token_secret);
-        $connection->post("statuses/update", ["status" => "Sayang Adhi, Test API - By Adhi HAHAHA"]);
+        $status = "Please see my ".$event->name." here :  localhost:8000/ticket/".$event->id;
+        $connection->post("statuses/update", ["status" => $status]);
         return redirect()->route('dashboard');
     }
 
     public function show_ticket($id){
         $event = Event::find($id);
         return view('show_tickets',['event'=>$event]);
-//        return redirect()->route('show_tickets',['event'=>$event]);
     }
 }
