@@ -23,6 +23,7 @@ Route::put('/location/{id}','LocationController@update')->name('update_location'
 Route::get('/event','EventController@index')->name('get_event');
 Route::post('/event','EventController@store')->name('store_event');
 Route::put('/event/{id}','EventController@update')->name('update_event');
+Route::get('/event/{id}','EventController@show')->name('show_event');
 
 //page
 Route::get('/dashboard','PageController@dashboard')->name('dashboard');

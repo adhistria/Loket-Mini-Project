@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Location;
 use Illuminate\Support\Facades\Auth;
+use Abraham\TwitterOAuth\TwitterOAuth;
+
 class EventController extends Controller
 {
     //
@@ -42,7 +44,6 @@ class EventController extends Controller
         $event->user_id = Auth::id();
         $event->location_id = $request->location_id;
         $event->save();
-//        return redirect()->route('add_event');
         return redirect()->route('get_event');
     }
 
