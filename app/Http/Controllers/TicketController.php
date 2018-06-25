@@ -25,7 +25,10 @@ class TicketController extends Controller
         $ticket->event_id= $request->event_id;
         $ticket->price= $request->price;
         $ticket->save();
+        $request->session()->flash('store', 'Ticket was successful created!');
         return redirect()->route('get_ticket');
+
+
     }
 
 
@@ -40,6 +43,7 @@ class TicketController extends Controller
         $ticket->event_id= $request->event_id;
         $ticket->price= $request->price;
         $ticket->save();
+        $request->session()->flash('update', 'Ticket was successful updated!');
         return redirect()->route('get_ticket');
     }
 }

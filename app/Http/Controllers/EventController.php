@@ -29,6 +29,7 @@ class EventController extends Controller
         $event->user_id = Auth::id();
         $event->location_id = $request->location_id;
         $event->save();
+        $request->session()->flash('store', 'Event was successful created!');
         return redirect('/event');
     }
 
@@ -44,6 +45,7 @@ class EventController extends Controller
         $event->user_id = Auth::id();
         $event->location_id = $request->location_id;
         $event->save();
+        $request->session()->flash('update', 'Event was successful updated!');
         return redirect()->route('get_event');
     }
 
@@ -52,13 +54,14 @@ class EventController extends Controller
         return view('show_event',['event'=>$event]);
     }
 
-    public function tweet($id){
+    public function tweet(Request $request,$id){
         $event = Event::find($id);
         $access_token= $_COOKIE['access_token'];
         $access_token_secret = $_COOKIE['access_token_secret'];
         $connection = new TwitterOAuth(env('CONSUMER_KEY'),env('CONSUMER_SECRET'),$access_token,$access_token_secret);
-        $status = "Please see my ".$event->name." here :  localhost:8000/ticket/".$event->id;
+        $status = "Please see my ".$event->title." here : localhost:8000/ticket/".$event->id;
         $connection->post("statuses/update", ["status" => $status]);
+        $request->session()->flash('tweet', 'You just updated your tweet!');
         return redirect()->route('dashboard');
     }
 

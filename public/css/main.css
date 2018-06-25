@@ -58,6 +58,7 @@
 }
 .box-tools{
     position: absolute;
+    /*position: static;*/
     right: 20px;
     top: 15px;
     padding: 10px;
@@ -70,6 +71,7 @@
 .table_header{
     padding: 10px;
     border-bottom: 2px solid black ;
+    position: relative;
 }
 .navbar{
     margin: 0;

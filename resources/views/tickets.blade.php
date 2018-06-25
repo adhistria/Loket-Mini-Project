@@ -2,6 +2,7 @@
 @section('title','Tickets')
 @section('header-title','Add and Update Your Tickets')
 @section('content-body')
+
     <div class="wrapper">
         <div class="modal fade" id="update_modal" role="dialog">
             <div class="modal-dialog">

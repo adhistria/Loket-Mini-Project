@@ -20,6 +20,7 @@ class LocationController extends Controller
         $location->name= $request->name;
         $location->address= $request->address;
         $location->save();
+        $request->session()->flash('store', 'Location was successful created!');
         return redirect()->route('get_location');
     }
 
@@ -32,6 +33,7 @@ class LocationController extends Controller
         $location->name= $request->name;
         $location->address= $request->address;
         $location->save();
+        $request->session()->flash('update', 'Location was successful updated!');
         return redirect()->route('get_location');
     }
 }

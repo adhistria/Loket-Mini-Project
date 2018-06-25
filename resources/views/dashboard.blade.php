@@ -1,22 +1,13 @@
 @extends('main.app')
-@section('title','Locations')
-{{--@section('header-title')--}}
+@section('title','Dashboard')
 @section('header-title','Welcome To Loket Mini Project')
-{{--@include('header-title',['header-title'=> 'Loket Mini Project'])--}}
 @section('content-body')
 
     @if(count($events)==0)
-        {{--<div class="card-wrapper" align="center">--}}
-            {{--<div class="card">--}}
-                {{--<div class="card-header">--}}
         <div align="center">
             <h4>There's No Event</h4>
             <h5> Create You're Event <a href="{{route('get_event')}}">Here</a></h5>
         </div>
-
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
     @else
         <h3 align="center">All Event</h3>
         @foreach($events as $event)

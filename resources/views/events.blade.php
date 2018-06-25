@@ -2,6 +2,13 @@
 @section('title','Event')
 @section('header-title','Add and Update Event')
 @section('content-body')
+    <div class="error">
+        @if(count($errors)>0)
+            @foreach($errors->all() as $error)
+                <p class="alert alert-danger">{{$error}}</p>
+            @endforeach
+        @endif
+    </div>
     <div class="wrapper">
         <div class="modal fade" id="update_modal" role="dialog">
             <div class="modal-dialog">

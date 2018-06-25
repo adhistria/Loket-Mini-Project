@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <label for="input_address" class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="4" class="form-control" id="input_address" placeholder="Address" name="address" required> </textarea>
+                                    <textarea rows="4" class="form-control" id="input_address" placeholder="Address" name="address" required></textarea>
                                 </div>
                             </div>
 
@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 <label for="input_address" class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="4" id="input_address" placeholder="Address" name="address" required> </textarea>
+                                    <textarea class="form-control" rows=4 id="input_address" placeholder="Address" name="address" required></textarea>
                                 </div>
                             </div>
 

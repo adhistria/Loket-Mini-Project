@@ -14,7 +14,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{route('dashboard')}}">Home</a></li>
                 <li><a href="{{route('get_event')}}">Event</a></li>
                 <li><a href="{{route('get_location')}}">Location</a></li>
                 <li><a href="{{route('get_ticket')}}">Ticket</a></li>
