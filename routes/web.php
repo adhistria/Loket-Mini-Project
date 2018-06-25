@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/location','LocationController@index')->name('get_location');
+Route::post('/location','LocationController@store')->name('store_location');
+Route::put('/location/{id}','LocationController@update')->name('update_location');
