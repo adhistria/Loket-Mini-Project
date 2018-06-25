@@ -23,10 +23,6 @@ class LocationController extends Controller
         return redirect()->route('get_location');
     }
 
-    public function edit(){
-        return view();
-    }
-
     public function update(Request $request,$id){
         $request->validate([
             'name' => 'required|string',

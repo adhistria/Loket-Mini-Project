@@ -33,3 +33,7 @@ Route::get('/login', 'Auth\LoginController@redirectToProvider')->name('login');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback')->name('callback');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
+//ticket
+Route::get('/ticket','TicketController@index')->name('get_ticket');
+Route::post('/ticket','TicketController@store')->name('store_ticket');
+Route::put('/ticket/{id}','TicketController@update')->name('update_ticket');
