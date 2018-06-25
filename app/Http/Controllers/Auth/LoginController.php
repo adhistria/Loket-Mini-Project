@@ -56,7 +56,7 @@ class LoginController extends Controller
             $user = $find_user;
         } else {
             $user = User::create([
-                'name' => $check_user->getName(),
+                'name' => ucwords(strtolower($check_user->getName())),
                 'email' => $check_user->getEmail(),
                 'twitter_id' => $twitter_id,
                 'remember_token' => $access_token

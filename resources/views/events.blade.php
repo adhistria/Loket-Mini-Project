@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label for="input_address" class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_description" placeholder="Event Description" name="description">
+                                    <textarea class="form-control" rows="4" id="input_description" placeholder="Event Description" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -74,7 +74,7 @@
                             <div class="form-group">
                                 <label for="input_address" class="col-sm-2 control-label">Address</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="input_description" placeholder="Event Description" name="description">
+                                    <textarea class="form-control" rows="4" id="input_description" placeholder="Event Description" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

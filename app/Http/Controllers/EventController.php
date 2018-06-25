@@ -59,4 +59,10 @@ class EventController extends Controller
         $connection->post("statuses/update", ["status" => "Sayang Adhi, Test API - By Adhi HAHAHA"]);
         return redirect()->route('dashboard');
     }
+
+    public function show_ticket($id){
+        $event = Event::find($id);
+        return view('show_tickets',['event'=>$event]);
+//        return redirect()->route('show_tickets',['event'=>$event]);
+    }
 }
