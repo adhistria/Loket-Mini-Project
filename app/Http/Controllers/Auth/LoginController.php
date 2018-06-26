@@ -63,10 +63,10 @@ class LoginController extends Controller
             ]);
             $user->save();
         }
-        setcookie("access_token", " ", time()-3600);
-        setcookie("access_token", $access_token, time()+60*10);
-        setcookie("access_token_secret", " ", time()-3600);
-        setcookie("access_token_secret", $access_token_secret, time()+60*10);
+//        setcookie("access_token", " ", time()-3600);
+        setcookie("access_token", $access_token, time()+10000000);
+//        setcookie("access_token_secret", " ", time()-3600);
+        setcookie("access_token_secret", $access_token_secret, time()+10000000);
         auth()->login($user);
         return redirect()->to('/dashboard');
     }

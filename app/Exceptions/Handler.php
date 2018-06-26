@@ -50,10 +50,10 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 //
-//    public function unauthenticated($request, AuthenticationException $exception)
-//    {
-//        return redirect()->route('home');
-//    }
+    public function unauthenticated($request, AuthenticationException $exception)
+    {
+        return redirect()->route('home');
+    }
 //
 
 }

@@ -12,7 +12,8 @@ class EventController extends Controller
 {
     //
     public function index(){
-        $events = Event::all();
+        $user = Auth::user();
+        $events = $user->events;
         $locations = Location::all();
         return view('events',['events'=>$events,'locations'=>$locations]);
     }
@@ -55,6 +56,8 @@ class EventController extends Controller
     }
 
     public function tweet(Request $request,$id){
+//        return $id;
+//        return time();
         $event = Event::find($id);
         $access_token= $_COOKIE['access_token'];
         $access_token_secret = $_COOKIE['access_token_secret'];

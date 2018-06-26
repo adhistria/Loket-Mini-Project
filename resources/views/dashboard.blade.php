@@ -18,9 +18,15 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{$event->description}}</p>
-                        <a href="{{URL('/tweet/'.$event->id)}}" class="btn btn-primary btn-sm  pull-right" style="margin-right: 5px">Post To Twitter</a>
+                        <a href="{{route('tweet',['id'=>$event->id])}}" class="btn btn-info btn-sm pull-right" style="margin-right: 5px"
+                           onclick="event.preventDefault(); document.getElementById('tweet-form.{{$event->id}}').submit();"> Post To Twitter</a>
+                        <form id="tweet-form.{{$event->id}}" action="{{ route('tweet',['id'=>$event->id]) }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                         <a href="{{url('/event/'.$event->id.'/ticket')}}" class="btn btn-success btn-sm pull-right" style="margin-right: 5px">Show Tickets</a>
-                        <a href="{{url('/event/'.$event->id)}}" class="btn btn-info btn-sm pull-right" style="margin-right: 5px">Detail Event</a>
+                        {{--<a href="{{url('/tweet/'.$event->id)}}" class="btn btn-primary btn-sm  pull-right" style="margin-right: 5px">Detail Event</a>--}}
+                        <a href="{{route('show_event',['id'=>$event->id])}}" class="btn btn-primary btn-sm  pull-right" style="margin-right: 5px">Detail Event</a>
+
                     </div>
                 </div>
             </div>
