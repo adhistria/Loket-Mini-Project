@@ -14,6 +14,12 @@ Untuk menjalankan aplikasi , buka directory file kemudian ketik command
 ```
 php artisan serve
 ```
+##  Library
+* [TwitterOAuth](https://twitteroauth.com/) - The most popular PHP library for use with the Twitter OAuth REST API.
+                                              
+* [Socialite](https://github.com/laravel/socialite) -  OAuth authentication with Facebook, Twitter, Google, LinkedIn, GitHub and Bitbucket.
+
+
 
 ## Built With
 
