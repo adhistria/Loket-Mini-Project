@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     //
-    protected $fillable = ['name',];
+    protected $fillable = ['title','date','description'];
     public function location(){
         return $this->belongsTo('App\Location');
     }

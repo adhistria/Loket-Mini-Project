@@ -32,11 +32,8 @@
     <div class="login-wrapper">
         <h1 align="center"> Loket Mini Project</h1>
         <h4 align="center"> Welcome To Loket</h4>
-        {{--<h6>Login With Your Twitter Account</h6>--}}
-        {{--<div class="col-md-1 col-md-offset-5">--}}
         <a href="{{route('login')}}" role="button" class="btn btn-info"><span class="fa fa-twitter" aria-hidden="true" style="font-size:20px"></span>
             Login</a>
-        {{--</div>--}}
 
 
 

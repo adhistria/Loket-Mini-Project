@@ -2,13 +2,6 @@
 @section('title','Event')
 @section('header-title','Add and Update Event')
 @section('content-body')
-    <div class="error">
-        @if(count($errors)>0)
-            @foreach($errors->all() as $error)
-                <p class="alert alert-danger">{{$error}}</p>
-            @endforeach
-        @endif
-    </div>
     <div class="wrapper">
         <div class="modal fade" id="update_modal" role="dialog">
             <div class="modal-dialog">
@@ -34,6 +27,12 @@
                                 <label for="input_address" class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" rows="4" id="input_description" placeholder="Event Description" name="description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_address" class="col-sm-2 control-label">Date</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="input_date"  name="date">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -93,6 +92,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="input_address" class="col-sm-2 control-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" id="input_date"  name="date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="location_id" class="col-sm-2 control-label">Location</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="location_id">
@@ -132,6 +137,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Location</th>
+                    <th>Date</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -140,6 +146,7 @@
                     <tr >
                         <td align="center">{{$event->title}}</td>
                         <td align="justify">{{$event->description}}</td>
+                        <td align="justify">{{$event->date}}</td>
                         <td align="center">{{$event->location->name}}</td>
                         <td align="center"><a
                                     href="#"
@@ -149,6 +156,7 @@
                                     data-description="{{ $event->description}}"
                                     data-idevent="{{$event->id}}"
                                     data-idlocation="{{$event->location_id}}"
+                                    data-date="{{$event->date}}"
                                     id = "open-modal"
                                     role = "button"
                                     class="btn btn-md btn-primary"
@@ -164,6 +172,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>Date</th>
                     <th>Location</th>
                     <th>Action</th>
                 </tr>
@@ -185,8 +194,10 @@
             var description= $(this).data('description');
             var location_id= $(this).data('idlocation');
             var event_id= $(this).data('idevent');
+            var date= $(this).data('date');
             $(".modal-body #input_title").val(title);
             $(".modal-body #input_description").val(description);
+            $(".modal-body #input_date").val(date);
             $(".modal-body select").val(location_id);
             $('#form_update').attr('action', "/event/"+event_id);
         });

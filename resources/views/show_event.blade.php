@@ -16,7 +16,29 @@
             </button>
             <a class="navbar-brand" href="{{route('home')}}">Mini Project</a>
         </div>
+        @if(Auth::check())
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{route('dashboard')}}">Home</a></li>
+                    <li><a href="{{route('get_event')}}">Event</a></li>
+                    <li><a href="{{route('get_location')}}">Location</a></li>
+                    <li><a href="{{route('get_ticket')}}">Ticket</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a>Hi {{Auth::user()->name}}</a></li>
+                    <li><a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
 
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        @endif
     </div>
 </nav>
 
@@ -39,6 +61,10 @@
                         <table style="width: 100%">
                             {{--<td class="col-md-1"><h4>Location</h4></td>--}}
                             {{--<td class="col-md-6"><h4>{{$event->location->name}}</h4></td>--}}
+                            <tr>
+                                <td style="width:20%"><h4>Date</h4></td>
+                                <td style="width: 80%"><h4>{{$event->date}}</h4></td>
+                            </tr>
                             <tr>
                                 <td style="width:20%"><h4>Location</h4></td>
                                 <td style="width: 80%"><h4>{{$event->location->name}}</h4></td>
