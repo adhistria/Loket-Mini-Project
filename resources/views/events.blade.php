@@ -136,8 +136,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Location</th>
                     <th>Date</th>
+                    <th>Location</th>
                     <th>Action</th>
                 </tr>
                 </thead>
