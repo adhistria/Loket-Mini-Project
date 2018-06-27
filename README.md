@@ -1,6 +1,6 @@
 # Project Title
 
-Loket Mini Project [adhiminiproject]('https://adhiminiproject.000webhostapp.com/)
+Loket Mini Project, [Mini Project](https://adhiminiproject.000webhostapp.com/)
 
 ## Asumsi
 
